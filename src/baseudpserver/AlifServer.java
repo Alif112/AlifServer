@@ -1,6 +1,5 @@
 package baseudpserver;
 
-import baseudpserver.util.Functions;
 import baseudpserver.util.Utility;
 import baseudpserver.config.Config;
 
@@ -9,7 +8,6 @@ import java.net.DatagramSocket;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.util.ArrayList;
 import baseudpserver.config.Constants;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +17,7 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BaseUdpServer {
+public class AlifServer {
     static ServerSocket ss;
     static Socket s;
     
@@ -453,7 +451,7 @@ public class BaseUdpServer {
             try {
                 Config.sendConfigToClient();
             } catch (IOException ex) {
-                Logger.getLogger(BaseUdpServer.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AlifServer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         

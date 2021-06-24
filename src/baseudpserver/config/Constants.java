@@ -57,7 +57,7 @@ import baseudpserver.udp.XTACACSImplementation;
 public class Constants {
     
     public static String serverVersion="1.3";
-    public static final String filename="udpServerSetup.txt";
+    public static final String filename="serverSetup.txt";
     
     public static String protocolType="protocolType";
     public static String protocolNumber="protocolNumber";
