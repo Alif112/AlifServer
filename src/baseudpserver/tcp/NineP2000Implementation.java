@@ -71,7 +71,7 @@ public class NineP2000Implementation {
             is.read(data, offset, length-19);
 
             return length-19;
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){}
         return -1;
 
     }

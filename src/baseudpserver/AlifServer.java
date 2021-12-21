@@ -14,10 +14,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import org.apache.log4j.Logger;
+//import org.apache.log4j.LogManager;
+//import org.apache.log4j.PropertyConfigurator;
 
 public class AlifServer {
+//    private static Logger LOGGER = LogManager.getLogger(AlifServer.class);
     static ServerSocket ss;
     static Socket s;
     
@@ -31,6 +33,11 @@ public class AlifServer {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SocketException {
+//        PropertyConfigurator.configure("log4j.properties");
+//        LOGGER.info("LOGER info");
+//        LOGGER.debug("LOGER debug");
+
+
             try{
         boolean isread=Config.readConfiguration();
         Config.showConfig(Config.configuration);
@@ -260,13 +267,24 @@ public class AlifServer {
                             len1=Constants.dnp.decodePacket(b1, 0, dp1.getLength());
                             len2=Constants.dnp.createPacket(newdata, Config.offset, sendDataLen+1);
                             break;
-                                
+                        case Constants.TCP_WITH_GPRS:
+                            len1=Constants.tcpWithGprs.decodePacket(b1, 0, dp1.getLength());
+                            len2=Constants.tcpWithGprs.createPacket(newdata, Config.offset, sendDataLen+1);
+                            break;
+                        case Constants.SNDCP:
+                            len1=Constants.sndcp.decodePacket(b1, 0, dp1.getLength());
+                            len2=Constants.sndcp.createPacket(newdata, Config.offset, sendDataLen+1);
+                            break;
+                        case Constants.IPv4_WITH_GPRS:
+                            len1=Constants.ipv4WithGprs.decodePacket(b1, 0, dp1.getLength());
+                            len2=Constants.ipv4WithGprs.createPacket(newdata, Config.offset, sendDataLen+1);
+                            break;
                                 
                     }
                     
                     /**show decoded message**/
                     System.out.println(Config.protocolName+" Received ---------------> "+len1);
-//                    String ack=Utility.bytesToHex(b1, 0, len1);                   
+                    String ack=Utility.bytesToHex(b1, 0, len1);                   
 //                    System.out.println(ack);
 
                   
@@ -376,9 +394,9 @@ public class AlifServer {
                         System.out.println("---------------------------------------> "+len2);
                         break;
                     }
-                    String msg=Utility.bytesToHex(data, Config.offset, len2);
-//                    System.out.println(msg);
-                    System.out.println("Received at Server=================> "+len2);
+                    String ack=Utility.bytesToHex(data, Config.offset, len2);
+//                    System.out.println(ack);
+                    System.out.println("Received at Server----------------> "+len2);
 
                     byte[] newdata=new byte[Config.offset+Config.dataLen+500];
                     int sendDataLen=Utility.getRandomData(newdata, Config.offset, Config.dataLen);
@@ -451,7 +469,7 @@ public class AlifServer {
             try {
                 Config.sendConfigToClient();
             } catch (IOException ex) {
-                Logger.getLogger(AlifServer.class.getName()).log(Level.SEVERE, null, ex);
+//                LOGGER.fatal(ex);
             }
         }
         

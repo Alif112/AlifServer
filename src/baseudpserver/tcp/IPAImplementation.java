@@ -85,13 +85,12 @@ public class IPAImplementation {
             dataSeq=(byte) is.read();
             Functions.ignoreByte(is, 2);
             createLen=Utility.buildLen2(is);
-            System.out.println("------------------len size at server"+createLen);
+//            System.out.println("------------------len size at server"+createLen);
             is.read(data, offset, createLen);
             Functions.ignoreByte(is, 4);
             
             return createLen;
         }catch(Exception e){
-            e.printStackTrace();
         }
         return -1;
     }

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AlifServer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/AlifServer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

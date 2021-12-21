@@ -202,14 +202,15 @@ public class SMTPImplementation {
         index+=len;
         data[index++]=0x0d; data[index++]=0x0a;
 
-        return len+231;
+        return len+232;
     }
 
     public int decodePacket(byte [] data, int offset, InputStream is) throws IOException{
-        Functions.ignoreByte(is, 227);
+        Functions.ignoreByte(is, 228);
         createLen=Utility.buildLen2(is);
+//        System.out.println("at decode server inside smtp===========================create len "+ createLen);
         is.read(data,0,createLen);
-//        System.out.println("===========================create len "+ createLen);
+
         Functions.ignoreByte(is, 2);
         return createLen;
     }

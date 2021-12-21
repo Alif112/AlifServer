@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="log4j-1.2-api-2.14.1">
+    <CLASSES>
+      <root url="jar:///home/alif/Downloads/apache-log4j-2.14.1-bin/log4j-1.2-api-2.14.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/log4j-1.2-api-2.14.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
